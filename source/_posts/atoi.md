@@ -12,7 +12,7 @@
 
 * 输入字符串只有"+"或"-"号
 
-<pre><code>
+```cpp
 long long StrToIntCore(const char* str, bool minus);
 
 enum Status {kValid = 0, kInvalid};
@@ -77,4 +77,4 @@ long long StrToIntCore(const char* digit, bool minus)
 
     return num;
 }
-</code></pre>
+```
