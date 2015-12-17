@@ -45,17 +45,18 @@ Solution 1 </h4>
 Time Complexity:</h4>
 <h5>O(n^2)</h5><br />
 <br />
-<pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> class VertexNode {  
+```cpp
+ class VertexNode {  
  public:  
       VertexNode(int num) : label(num) {};  
       int label;  
-      vector&lt;int&gt; edges;  
+      vector<int> edges;  
  };  
  class Solution {  
  public:  
-      void buildAdjcentList(vector&lt;pair&lt;int, int&gt;&gt;&amp; edges, unordered_map&lt;int, VertexNode*&gt; &amp; adjList)  
+      void buildAdjcentList(vector<pair<int, int>>& edges, unordered_map<int, VertexNode*> & adjList)  
       {  
-           for (pair&lt;int, int&gt; p : edges)  
+           for (pair<int, int> p : edges)  
            {  
                 VertexNode * newnode1, *newnode2;  
                 if (adjList.find(p.first) == adjList.end())  
@@ -76,42 +77,42 @@ Time Complexity:</h4>
                 {  
                      newnode2 = adjList[p.second];  
                 }  
-                newnode1-&gt;edges.push_back(newnode2-&gt;label);  
-                newnode2-&gt;edges.push_back(newnode1-&gt;label);  
+                newnode1->edges.push_back(newnode2->label);  
+                newnode2->edges.push_back(newnode1->label);  
            }  
       }  
-      void DFSMHT(unordered_map&lt;int, VertexNode*&gt; &amp; adjList, int curlabel, int prevlabel, int depth, int &amp; minDepth)  
+      void DFSMHT(unordered_map<int, VertexNode*> & adjList, int curlabel, int prevlabel, int depth, int & minDepth)  
       {  
            VertexNode * curNode = adjList[curlabel];  
            if (!curNode) return;  
-           if (curNode-&gt;edges.size() == 1 &amp;&amp; curNode-&gt;edges[0] == prevlabel)  
+           if (curNode->edges.size() == 1 && curNode->edges[0] == prevlabel)  
            {  
-                if (minDepth &gt; depth)  
+                if (minDepth > depth)  
                 {  
                      minDepth = depth;  
                 }  
                 return;  
            }  
-           for (int i : curNode-&gt;edges)  
+           for (int i : curNode->edges)  
            {  
              if (i == prevlabel) continue;  
-                DFSMHT(adjList, i, curNode-&gt;label, depth+1, minDepth);  
+                DFSMHT(adjList, i, curNode->label, depth+1, minDepth);  
            }  
       }  
-   vector&lt;int&gt; findMinHeightTrees(int n, vector&lt;pair&lt;int, int&gt;&gt;&amp; edges) {  
-        unordered_map&lt;int, VertexNode*&gt; adjList;  
+   vector<int> findMinHeightTrees(int n, vector<pair<int, int>>& edges) {  
+        unordered_map<int, VertexNode*> adjList;  
         buildAdjcentList(edges, adjList);  
         int minDepth = INT_MAX;  
         int curdepth = INT_MAX;  
-        vector&lt;int&gt; retList;  
-        for (pair&lt;int, VertexNode*&gt; it : adjList)  
+        vector<int> retList;  
+        for (pair<int, VertexNode*> it : adjList)  
         {  
-             DFSMHT(adjList, it.second-&gt;label, -1, 1, curdepth);  
-             if (curdepth &lt;= minDepth)  
+             DFSMHT(adjList, it.second->label, -1, 1, curdepth);  
+             if (curdepth <= minDepth)  
              {  
-                  if (curdepth &lt; minDepth)  
+                  if (curdepth < minDepth)  
                        retList.clear();  
-                  retList.push_back(it.second-&gt;label);  
+                  retList.push_back(it.second->label);  
                   minDepth = curdepth;  
              }  
              curdepth = INT_MAX;  
@@ -119,7 +120,7 @@ Time Complexity:</h4>
         return retList;  
    }  
  };  
-</code></pre>
+```
 <br />
 <br />
 <h4>
@@ -129,24 +130,29 @@ Time Complexity:</h4>
 <h5>O(n)</h5>
 <br />
 <br />
-<pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> class Solution(object):  
-   def findMinHeightTrees(self, n, edges):  
-     """  
-     :type n: int  
-     :type edges: List[List[int]]  
-     :rtype: List[int]  
-     """  
-     children = collections.defaultdict(set)  
-     for x, y in edges:  
-          children[x].add(y)  
-          children[y].add(x)  
-     vertices = set(children.keys())  
-     while len(vertices) &gt; 2:  
-          leaves = [x for x in children if len(children[x]) == 1]  
-          for x in leaves:  
-               for y in children[x]:  
-                    children[y].remove(x)  
-               del children[x]  
-               vertices.remove(x)  
-     return list(vertices) if n != 1 else [0]  
-</code></pre>
+```python
+class Solution(object):
+    def findMinHeightTrees(self, n, edges):
+        """
+        :type n: int
+        :type edges: List[List[int]]
+        :rtype: List[int]
+        """
+        children = collections.defaultdict(set)
+        for x, y in edges:
+        	children[x].add(y)
+        	children[y].add(x)
+
+        vertices = set(children.keys())
+
+        while len(vertices) > 2:
+        	leaves = [x for x in children if len(children[x]) == 1]
+        	for x in leaves:
+        		for y in children[x]:
+        			children[y].remove(x)
+        		del children[x]
+        		vertices.remove(x)
+
+        return list(vertices) if n != 1 else [0]
+```
+
