@@ -64,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: modernist
+theme: yilia
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -73,5 +73,5 @@ deploy:
   type: git
 
 
-disqus_shortname: martynwin
-duoshuo_shortname: martynwin
+#disqus_shortname: martynwin
+#duoshuo_shortname: martynwin
