@@ -1,4 +1,4 @@
-title: H-Index
+title: "[LeetCode] H-Index"
 date: 2016-01-14 22:41:28
 tags: LeetCode
 ---
@@ -13,7 +13,7 @@ tags: LeetCode
 > * O(1)
 
 
-## Code 
+## Code
 ```python
 class Solution(object):
     def hIndex(self, citations):
@@ -27,5 +27,5 @@ class Solution(object):
         for x in xrange(len(citations)):
             if citations[x] >= x+1:
                 idx += 1
-        return idx        
+        return idx
 ```

@@ -1,4 +1,4 @@
-title: RepeatedDNASequences
+title: "[LeetCode] Repeated DNA Sequences"
 date: 2016-01-17 22:12:46
 tags: [LeetCode, Bit-Manipulation]
 ---
@@ -12,7 +12,7 @@ tags: [LeetCode, Bit-Manipulation]
 > * O(n)
 
 
-## Code 
+## Code
 ```python
 class Solution(object):
     def findRepeatedDnaSequences(self, s):
