@@ -1,0 +1,47 @@
+title: "[LeetCode] Increasing Triplet Subsequence"
+date: 2016-02-29 18:37:37
+tags: [LeetCode, Greedy]
+---
+
+## Analysis:
+> We maintain two lists, a store list and a list for candidates, both of them are all limited to 2 elements, then we update the candidate list first, because we don't know if it is the final anser.
+
+## Time Complexity:
+> * O(n)
+
+## Space Complexity：
+> * O(1)
+
+
+## Code
+```python
+class Solution(object):
+    def increasingTriplet(self, nums):
+		"""
+		:type nums: List[int]
+		:rtype: bool
+		"""
+		if len(nums) < 3:
+			return False
+
+		curlist, candilist = [], []
+		for i in xrange(len(nums)):
+			if len(curlist) < 2:
+				if len(curlist) < 1:
+					curlist.append(nums[i])
+				elif nums[i] < curlist[0]:
+					curlist[0] = nums[i]
+				elif nums[i] > curlist[0]:
+					curlist.append(nums[i])
+					candilist = list(curlist)
+			else:
+				if nums[i] > curlist[-1]:
+					return True
+				else:
+					if nums[i] <= candilist[0]:
+						candilist[0] = nums[i]
+					elif nums[i] < candilist[1]:
+						candilist[1] = nums[i]
+						curlist = list(candilist)
+		return False
+```
