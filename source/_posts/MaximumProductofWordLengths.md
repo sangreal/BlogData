@@ -1,4 +1,8 @@
-## [LeetCode] Maximum Product of Word Lengths
+title: "[LeetCode] Maximum Product of Word Lengths"
+date: 2016-05-02 18:37:37
+tags: [LeetCode, Bit Manipulation]
+---
+
 ### Analysis
 * We can convert every word into a number which can represent the appearance of every character. Since the length of Int is 32bits. So it is sufficient to use bit to represent them.
 
