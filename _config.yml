@@ -4,8 +4,8 @@
 
 # Site
 title: Martyn Ye's Playground
-subtitle: A geeker and a dreamer
-description: A geeker and a dreamer
+subtitle: A geek and a dreamer
+description: A geek and a dreamer
 author: Martyn Ye
 email: martynwin@gmail.com
 language: zh-CN
@@ -66,8 +66,6 @@ pagination_dir: page
 plugins:
 - hexo-generator-sitemap
 - hexo-generator-feed
-- hexo-tag-video
-- hexo-tag-owl
 
 ## Themes: http://hexo.io/themes/
 theme: yilia
