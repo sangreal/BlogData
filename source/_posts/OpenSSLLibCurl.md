@@ -1,4 +1,4 @@
-title: "Build Scripts for OpenSSL & Libcurl for Android"
+title: "Build Scripts for OpenSSL and Libcurl for Android"
 date: 2016-04-30 18:37:37
 tags: [Android, Github]
 ---
