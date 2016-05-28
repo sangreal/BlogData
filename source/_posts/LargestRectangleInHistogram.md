@@ -7,7 +7,7 @@ tags: [LeetCode, Stack]
 > I search from the internet. This is a really skillful solution. In case, I will forget in the future. The key parts are as followed:
 > > 1. keep the stack in the incremental order.
 > > 2. Compute the width maximum when the stack is empty and height maximum at every step
-> > 3. Clear the stack before exit
+> > 3. Clear the stack before exit, remember that the width should be the number of the rectangles
 
 ## Time Complexity:
 > * O(n)
